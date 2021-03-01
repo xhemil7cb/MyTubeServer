@@ -3798,9 +3798,18 @@ module.exports = {
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    forOwn = _require.forOwn;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+
+function foo(url) {
+  var video = document.getElementById('videoplayer');
+  video.src = "MyUploads/" + url;
+  video.play();
+}
 
 /***/ }),
 
