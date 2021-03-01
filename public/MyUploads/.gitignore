@@ -1,2 +1,2 @@
-*
-!.gitignore
+*.mp4
+.gitignore
