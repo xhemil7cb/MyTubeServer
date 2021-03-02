@@ -20,15 +20,18 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $user = Auth::user();
-    $musics = $user->musics;
-    return view('dashboard')->with('musics', $musics);
+
+    $musics = Auth::user()->musics()->paginate(5);
+   
+    return view('dashboard',['musics' => $musics]);
+
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/upload', [UploadFileController::class,'get'])->name('upload');
-Route::post('/upload',[UploadFileController::class,'upload']);
+Route::get('/upload', [UploadFileController::class,'get'])->middleware('auth')->name('upload');
+Route::post('/upload',[UploadFileController::class,'upload'])->middleware('auth');
 
-Route::get('/download', [DownloadFileController::class,'get'])->name('download');
+Route::get('/download', [DownloadFileController::class,'get'])->name('download')->middleware('auth');
+Route::get('/download/{filename}',[DownloadFileController::class,'download'])->middleware('auth');
 
 
 require __DIR__.'/auth.php';
