@@ -13,15 +13,7 @@ class DownloadFileController extends Controller
    
     public function get(){ 
 
-
-        $user = Auth::user();
-        $musics = $user->musics()->paginate(3);
-        return $musics;
-
- /*
-        $musics = DB::table('musics')->Paginate(3);
-        return view('download', ['musics' => $musics] );
-*/
+        return $musics =Auth::user()->musics;
 
     }
 
@@ -34,6 +26,11 @@ class DownloadFileController extends Controller
 
         return response()->download($pathtofile,$originalfilename);
       
+    }
+
+    public function apidownload(){
+
+        return response()->json("AHshahahahhahahahahahahhahahaha .I..", 69);
     }
 
 }

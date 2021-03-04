@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoadFiles\UploadFileController;
 use App\Http\Controllers\LoadFiles\DownloadFileController;
+use App\Http\Middleware\VerifyAuthToken;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::post('/upload',[UploadFileController::class,'upload'])->middleware('auth'
 
 Route::get('/download', [DownloadFileController::class,'get'])->name('download')->middleware('auth');
 Route::get('/download/{filename}',[DownloadFileController::class,'download'])->middleware('auth');
+
 
 
 require __DIR__.'/auth.php';

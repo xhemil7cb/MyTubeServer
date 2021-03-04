@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
 
-        // Qeto metoda po vijn pre LoginRequest 
+ 
         $request->authenticate();
 
         $request->session()->regenerate();
